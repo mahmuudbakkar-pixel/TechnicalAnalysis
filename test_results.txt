@@ -1,0 +1,8 @@
+Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+Loading required package: shiny
+PASS: OHLCV cleaning, weekly/monthly aggregation, indicator alignment,
+      crossover signals, line/candlestick/area charts, RSI and MACD panels,
+      and Shiny server with a clearly synthetic local CSV fixture.
+Yahoo Finance live fetch and browser interaction require network and are not covered here.
