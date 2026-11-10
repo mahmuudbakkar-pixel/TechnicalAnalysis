@@ -1,0 +1,6 @@
+PASS: AAPL 250 rows; mean, sample SD and every SMA independently checked.
+PASS: MSFT 250 rows; mean, sample SD and every SMA independently checked.
+PASS: GOOGL 250 rows; mean, sample SD and every SMA independently checked.
+PASS: AMZN 250 rows; mean, sample SD and every SMA independently checked.
+PASS: TSLA 250 rows; mean, sample SD and every SMA independently checked.
+PASS: tied modes, unique values, short series, single value and invalid period.

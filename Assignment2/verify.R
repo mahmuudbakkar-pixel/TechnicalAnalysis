@@ -1,0 +1,21 @@
+# Independent numerical checks and edge cases; synthetic values only in tests.
+source("stock_functions.R")
+near <- function(x,y) stopifnot(isTRUE(all.equal(x,y,tolerance=1e-9,check.attributes=FALSE)))
+fixture <- function(x) data.frame(Date=as.Date("2025-01-01")+seq_along(x),Open=x,High=x+1,Low=x-1,Close=x,Volume=100,Adjusted=x)
+r <- calculate_statistics(fixture(c(1,2,2,3,4)), "TEST", 3L)
+near(r$summary$Mean,2.4); near(r$summary$Median,2); near(r$summary$SD,sqrt(1.3))
+near(r$series$SMA,c(NA,NA,5/3,7/3,3));stopifnot(r$summary$Mode=="2")
+near(statistical_mode(c(1,1,2,2,3)), c(1,2));stopifnot(length(statistical_mode(1:5))==0)
+stopifnot(all(is.na(calculate_statistics(fixture(1:2), ma_period=3)$series$SMA)))
+stopifnot(is.na(calculate_statistics(fixture(1), ma_period=1)$summary$SD))
+stopifnot(inherits(try(calculate_statistics(fixture(1:5),ma_period=0),silent=TRUE),'try-error'))
+stocks <- load_stock_data()
+for(s in names(stocks)) {
+ d<-stocks[[s]]; x<-d$Close; n<-length(x); a<-calculate_statistics(d,s,20)
+ near(a$summary$Mean,sum(x)/n)
+ near(a$summary$SD,sqrt(sum((x-sum(x)/n)^2)/(n-1)))
+ near(a$series$SMA,as.numeric(stats::filter(x,rep(1/20,20),sides=1)))
+ stopifnot(sum(is.na(a$series$SMA))==19,n==250)
+ cat('PASS:',s,'250 rows; mean, sample SD and every SMA independently checked.\n')
+}
+cat('PASS: tied modes, unique values, short series, single value and invalid period.\n')

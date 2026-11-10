@@ -1,0 +1,6 @@
+"Symbol","Source","FirstDate","LastDate","Rows"
+"AAPL","Bundled Yahoo historical snapshot",2025-01-02,2025-12-31,250
+"MSFT","Bundled Yahoo historical snapshot",2025-01-02,2025-12-31,250
+"GOOGL","Bundled Yahoo historical snapshot",2025-01-02,2025-12-31,250
+"AMZN","Bundled Yahoo historical snapshot",2025-01-02,2025-12-31,250
+"TSLA","Bundled Yahoo historical snapshot",2025-01-02,2025-12-31,250
