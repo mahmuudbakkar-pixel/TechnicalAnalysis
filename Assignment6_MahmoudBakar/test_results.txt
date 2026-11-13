@@ -1,0 +1,7 @@
+Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+Loading required package: shiny
+PASS: aggregation, indicators, signals, three chart types, all panels, CSV and saved Yahoo data.
+Shiny server rendered daily candlesticks and monthly area charts.
+R version 4.2.2 Patched (2022-11-10 r83330) 
